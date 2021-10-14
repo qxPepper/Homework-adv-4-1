@@ -1,7 +1,8 @@
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    private static final int COUNT_SPECIALISTS = 5;
+
+    public static void main(String[] args) {
         CallCenter callCenter = new CallCenter();
-        final int COUNT_SPECIALISTS = 5;
 
         Thread ATS = new Thread(callCenter::workOfATS, "АТС");
 
@@ -11,7 +12,5 @@ public class Main {
             String specialist = "Специалист_" + i;
             new Thread(callCenter::workOfSpecialist, specialist).start();
         }
-
-        ATS.join();
     }
 }
